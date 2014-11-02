@@ -15,7 +15,7 @@ Otherwise, go to the directory src, and the makefile is provided. Note that BEFO
  
 To run the program, type ./AlgorithmicComposer <inputdirectory> <outputdirectory> into the command line, replacing the directories appropriately. Then follow the instructions to compose on the command line new pieces. Scores can be found in the xml directory
 
-Note that the output file will be a MusicXML file, and as such score editing software will be needed to open and listen to the product. I recommend downloading the free copy of Finale NotePad found at http://www.finalemusic.com/products/finale-notepad/resources/
+Note that the output file will be a MusicXML file, and as such score editing software will be needed to open and listen to the product. I recommend downloading this [free copy of Finale NotePad](http://www.finalemusic.com/products/finale-notepad/resources/).
 
 Thanks to shabohou for his [implementation of the ADIOS algorithm](https://github.com/shaobohou/madios) and to sourceforge for their [libmusicxml library](http://libmusicxml.sourceforge.net). 
 
