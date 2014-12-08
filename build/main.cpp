@@ -74,7 +74,7 @@ static void read_and_analyse_file(string f, Matrix_Master *mm){
             if (disp != 0){
                 cout << "Ignoring file" << endl;
                 return;}
-            if (s->delete_me() || s->how_many_voices() > 4){}
+            if (s->delete_me() || s->how_many_voices() > 4){ remove(f);}
             else{
             mm->update(s);
             }
@@ -101,12 +101,8 @@ int main(int argc, char *argv[]) {
     clock_t t;
     t = clock();
     string grammar_path = "grammar.txt";
-  //  try { remove(grammar_path);}
-   // catch(invalid_argument){}
-    path gr = grammar_path;
-    if (exists(gr)){
-        boost::filesystem::remove(gr);
-    }
+    try { remove(grammar_path);}
+    catch(invalid_argument){}
     if (argc > 1) {
         path p = argv[1];
         cout << "What order matrix would you like? (Beween 1-8): ";
@@ -158,7 +154,7 @@ int main(int argc, char *argv[]) {
         Grammar_Parser *gp = new Grammar_Parser(grammar_path);
         Score_Maker sm(mm, gp, output_location);
         sm.create_new_score();
-        boost::filesystem::remove(gr);
+        remove(grammar_path);
         delete mm;
         cout << "Thank you, goodbye!" << endl;
     }
