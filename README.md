@@ -1,31 +1,32 @@
 Algorithmic Composer
 ======
 
-I built this algorithmic musical composition program for my Master's Thesis at Imperial College London, for which I received Disinction. The general concept was to build a platform that can read in any amount of music in musicXML format, the common standard for music composition programs like Sibelius and Finale, and analyse the music in such a way that the program can compose new material without being trained in any music theory. As such, the program analyses each score, and develops multiple Markovian transition matrices for rhythm, pitch and harmony, as well as an induced grammar via the ADIOS algorithm. With this analysis in place, the program can compose new scores and output new musicXML files.
+I built this algorithmic musical composition program for my Master's Thesis at Imperial College London, for which I received Disinction. 
+The general concept was to build a platform that can read in any amount of music in musicXML format, the common standard for music composition programs like Sibelius and Finale, and analyse the music in such a way that the program can compose new material without being trained in any music theory. As such, the program analyses each score, and develops multiple Markovian transition matrices for rhythm, pitch and harmony, as well as an induced grammar via the ADIOS algorithm. With this analysis in place, the program can compose new scores and output new musicXML files.
 
 For a more in depth analysis, please read my Thesis report found in this repository!
 
 
-Files
+This Repository
 -----
-    - src - The source code for this project
-    - Xcode - The Xcode project (for compilation and execution)
-    - build - The source code along with makefile (for compilation and execution)
+    - /src - The source code for this project
+    - /Xcode - The Xcode project (for compilation and execution)
+    - /build - The source code along with makefile (for compilation and execution)
     - report.pdf - The written report for the thesis
-    - xml - sample musicXML files for use with the program
+    - /xml - sample musicXML files for use with the program
 
 
 
-The Program
+Source Code
 -----
 
-Please refer to Chapter 5 of the report for an overview of how the classes interact with one another and how system works. 
+Please refer to Chapter 5 of the report for an overview of how the classes interact with one another and how the system works. 
 
 The file structure found in src is as follows:
 
     - main.cpp
 
-    - Score_Data_Structure - this subdirectory contains the classes for Score representation. The Score is populated by data extracted from a musicXML file, and then analysed Markovianly by the Matrix_Master, and Grammatically by the Grammar_Parser.
+    - /Score_Data_Structure - this subdirectory contains the classes for Score representation. The Score is populated by data extracted from a musicXML file, and then analysed Markovianly by the Matrix_Master, and Grammatically by the Grammar_Parser.
         - Score.cpp/Score.h
         - Part.cpp/Part.h
         - Measure.cpp/Measure.h
@@ -37,21 +38,21 @@ The file structure found in src is as follows:
         - Implementation.cpp/Implementation.h
         - Global_Variables.h
 
-    - Markov - this subdirectory contains the different types of matrices, all of which instantiate the abstract class Matrix.cpp. The Matrix_Master serves as the interface and container for all matrices, including the interface for the Scores whose data populate the matrices, as well as the Score_Maker who requests new notes based on n-grams during composition.
+    - /Markov - this subdirectory contains the different types of matrices, all of which instantiate the abstract class Matrix.cpp. The Matrix_Master serves as the interface and container for all matrices, including the interface for the Scores whose data populate the matrices, as well as the Score_Maker who requests new notes based on n-grams during composition.
         - Matrix_Master.cpp/Matrix_Master.h
         - Matrix.cpp/Matrix.h
         - Part_Matrix.cpp/Part_Matrix.h
         - Rhythmic_Matrix.cpp/Rhythmic_Matrix.h
         - Chord_Matrix.cpp/Chord_Matrix.h
 
-    - Grammar - this subdirectory contains the wrapper for the madios algorithm library
+    - /Grammar - this subdirectory contains the wrapper for the madios algorithm library
         - Grammar_Parser.cpp/Grammar_Parser.h
 
-    - Score_Creator - this subdirectory contains the classes which use the constructed grammars, as well as the markov matrices and compose a new Score. This Score is then translated into a musicXML file via XML_Creator
+    - /Score_Creator - this subdirectory contains the classes which use the constructed grammars, as well as the Markov Matrices to compose a new Score. This Score is then translated into a musicXML file via XML_Creator
         - Score_Maker.cpp/Score_Maker.h
         - XML_Creator.cpp/XML_Creator.h
 
-    - Libraries - this subdirectory contains the madios algorithm (for grammar induction) and libmusicxml libraries (for interacting with musicXML files) 
+    - /Libraries - this subdirectory contains the madios algorithm (for grammar induction) and libmusicxml libraries (for interacting with musicXML files) 
 
 
 
